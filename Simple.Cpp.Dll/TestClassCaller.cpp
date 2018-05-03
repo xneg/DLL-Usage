@@ -5,7 +5,7 @@
 
 extern "C"
 {
-	DLLEXPORT TestClass* CreateSomeClass()
+	DLLEXPORT TestClass* CreateTestClass()
 	{
 		return new TestClass();
 	}
