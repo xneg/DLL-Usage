@@ -6,7 +6,9 @@ namespace CSharp.Dll.Consumer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(DllConsumer.Sum(3, 2));
+            Console.WriteLine(DllConsumer.SayHello());
+            Console.ReadLine();
         }
     }
 }

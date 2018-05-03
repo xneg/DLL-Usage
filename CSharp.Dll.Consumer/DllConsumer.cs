@@ -1,13 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace CSharp.Dll.Consumer
 {
     public class DllConsumer
     {
-        [DllImport("SimpleDLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int AddNumsReturn(int a, int b);
+        [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int Add(int a, int b);
+
+        [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr ReturnCharPtr();
+
+        public static int Sum(int a, int b)
+        {
+            return Add(a, b);
+        }
+
+        public static string SayHello()
+        {
+            return Marshal.PtrToStringAnsi(ReturnCharPtr());
+        }
     }
 }

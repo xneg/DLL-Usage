@@ -1,6 +1,8 @@
+#include "Header.h"
+
 const char* ReturnCharPtr()
 {
-	return "Test";
+	return "Hello world!";
 }
 
 int Add(int a, int b)
