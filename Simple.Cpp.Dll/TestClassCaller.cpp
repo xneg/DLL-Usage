@@ -23,7 +23,22 @@ extern "C"
 		if (p_testClass != NULL)
 		{
 			p_testClass->Free();
-			delete(p_testClass);
+		}
+	}
+
+	DLLEXPORT void IncrementCounter(TestClass* p_testClass)
+	{
+		if (p_testClass != NULL)
+		{
+			p_testClass->IncrementCounter();
+		}
+	}
+
+	DLLEXPORT int GetCounter(TestClass* p_testClass)
+	{
+		if (p_testClass != NULL)
+		{
+			return p_testClass->GetCounter();
 		}
 	}
 }

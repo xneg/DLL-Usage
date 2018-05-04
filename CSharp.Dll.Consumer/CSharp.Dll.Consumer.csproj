@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Simple.Cpp.Dll.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="..\x64\Debug\Simple.Cpp.Dll.dll" Link="Simple.Cpp.Dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

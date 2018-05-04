@@ -20,12 +20,18 @@ namespace CSharp.Dll.Consumer
         [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void Free(IntPtr pTestClass);
 
+        [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void IncrementCounter(IntPtr pTestClass);
+
+        [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int GetCounter(IntPtr pTestClass);
+
         public static int Sum(int a, int b)
         {
             return Add(a, b);
         }
 
-        public static string SayHello()
+        public static string SayHelloWorld()
         {
             return Marshal.PtrToStringAnsi(ReturnCharPtr());
         }
@@ -45,6 +51,16 @@ namespace CSharp.Dll.Consumer
         public void Free()
         {
             Free(_testClass);
+        }
+
+        public void IncrementCouter()
+        {
+            IncrementCounter(_testClass);
+        }
+
+        public int GetCounter()
+        {
+            return GetCounter(_testClass);
         }
     }
 }

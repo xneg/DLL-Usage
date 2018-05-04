@@ -9,5 +9,8 @@ public:
 
 	void Allocate(int count);
 	void Free();
+
+	void IncrementCounter();
+	int GetCounter();
 };
 
