@@ -18,13 +18,16 @@ namespace CSharp.Dll.Consumer
         private static extern void Allocate(IntPtr pTestClass, int count);
 
         [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void Free(IntPtr pTestClass);
+        private static extern void Deallocate(IntPtr pTestClass);
 
         [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void IncrementCounter(IntPtr pTestClass);
 
         [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int GetCounter(IntPtr pTestClass);
+
+        [DllImport("Simple.Cpp.Dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void Free(IntPtr pTestClass);
 
         public static int Sum(int a, int b)
         {
@@ -48,9 +51,9 @@ namespace CSharp.Dll.Consumer
             Allocate(_testClass, size);
         }
 
-        public void Free()
+        public void Deallocate()
         {
-            Free(_testClass);
+            Deallocate(_testClass);
         }
 
         public void IncrementCouter()
@@ -61,6 +64,12 @@ namespace CSharp.Dll.Consumer
         public int GetCounter()
         {
             return GetCounter(_testClass);
+        }
+
+        public void Free()
+        {
+            Free(_testClass);
+            _testClass = IntPtr.Zero;
         }
     }
 }

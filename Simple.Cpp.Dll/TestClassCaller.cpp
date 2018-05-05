@@ -18,11 +18,19 @@ extern "C"
 		}
 	}
 
-	DLLEXPORT void Free(TestClass* p_testClass)
+	DLLEXPORT void Deallocate(TestClass* p_testClass)
 	{
 		if (p_testClass != NULL)
 		{
 			p_testClass->Free();
+		}
+	}
+
+	DLLEXPORT void Free(TestClass* p_testClass)
+	{
+		if (p_testClass != NULL)
+		{
+			delete p_testClass;
 		}
 	}
 
