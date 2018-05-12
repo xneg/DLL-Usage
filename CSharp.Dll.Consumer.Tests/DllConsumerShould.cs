@@ -69,8 +69,6 @@ namespace CSharp.Dll.Consumer.Tests
         [Fact]
         public void FreeMemory()
         {
-            GC.TryStartNoGCRegion(MemorySize * 2, true);
-
             var consumer = new DllConsumer();
 
             consumer.Allocate(MemorySize);
@@ -82,8 +80,6 @@ namespace CSharp.Dll.Consumer.Tests
 
             var managedMemoryAfterFree = GC.GetTotalMemory(false);
             var allMemoryAfterFree = Process.GetCurrentProcess().PrivateMemorySize64;
-
-            GC.EndNoGCRegion();
 
             Assert.True(allMemoryAfterAllocation - managedMemoryAfterFree >= MemorySize,
                 "size of total used memory decresead");
