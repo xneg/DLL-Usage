@@ -42,11 +42,22 @@ namespace CSharp.Dll.Consumer.Tests
             var allMemoryAfterAllocation = Process.GetCurrentProcess().PrivateMemorySize64;
 
             GC.Collect(2, GCCollectionMode.Forced);
+            GC.WaitForPendingFinalizers();
 
             var allMemoryAfterFree = Process.GetCurrentProcess().PrivateMemorySize64;
 
             Assert.True(allMemoryAfterAllocation - allMemoryAfterFree >= MemorySize,
                     "size of total used memory decreased");
+        }
+
+        [Fact]
+        public void ThrowObjectDisposedExceptionAfterDisposing()
+        {
+            var disposableClass = new DisposableClass();
+
+            disposableClass.Dispose();
+
+            Assert.Throws<ObjectDisposedException>(() => disposableClass.AllocateMemory(MemorySize));
         }
 
         static void AllocateDisposableClass()
